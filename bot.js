@@ -7,30 +7,30 @@ var prefix = "#"
     if(message.content.startsWith(prefix + 'buy')) {
         let args = message.content.split(' ').slice(1).join(' ');
         let support = message.guild.roles.find("name","Buy Factions");
-        let FactionsStation = message.guild.channels.find("name", "Factions");
+        let factionsStation = message.guild.channels.find("name", "Factions");
         if(!args) {
             return message.channel.send('الرجأء ضع سبب التذكرة.');
         };
                 if(!support) {
                     return message.channel.send('**Please make sure that `Buy Factions` role exists and it\'s not duplicated.**');
                 };
-            if(!ticketsStation) {
+            if(!factionsStation) {
                 message.guild.createChannel("Factions", "category");
             };
-                message.guild.createChannel(`Factions-${message.author.username}`, "text").then(Factions => {
+                message.guild.createChannel(`factions-${message.author.username}`, "text").then(Factions => {
                     message.delete()
-                        message.channel.send(`لقد تم انشاء تذكرتك. [ ${Factions} ]`);
-                    Factions.setParent(FactionsStation);
-                    FactionsStation.setPosition(1);
-                        Factions.overwritePermissions(message.guild.id, {
+                        message.channel.send(`لقد تم انشاء تذكرتك. [ ${factions} ]`);
+                    factions.setParent(factionsStation);
+                    factionsStation.setPosition(1);
+                        factions.overwritePermissions(message.guild.id, {
                             SEND_MESSAGES: false,
                             READ_MESSAGES: false
                         });
-                            Factions.overwritePermissions(support.id, {
+                            factions.overwritePermissions(support.id, {
                                 SEND_MESSAGES: true,
                                 READ_MESSAGES: true
                             });
-                                Factions.overwritePermissions(message.author.id, {
+                                factions.overwritePermissions(message.author.id, {
                                     SEND_MESSAGES: true,
                                     READ_MESSAGES: true
                                 });
@@ -40,11 +40,11 @@ var prefix = "#"
                                 .setThumbnail(`${message.author.avatarURL}`)
                                 .addField('صاحب التذكرة', message.author)
  
-                                Factions.sendEmbed(embed);
+                                factions.sendEmbed(embed);
                 }) .catch();
     }
     if(message.content.startsWith(prefix + 'يغلق')) {
-        if(!message.channel.name.startsWith("Factions")) {
+        if(!message.channel.name.startsWith("factions")) {
             return;
         };  
                 let embed = new Discord.RichEmbed()

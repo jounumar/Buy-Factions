@@ -7,7 +7,7 @@ var prefix = "#"
     if(message.content.startsWith(prefix + 'buy')) {
         let args = message.content.split(' ').slice(1).join(' ');
         let support = message.guild.roles.find("name","Buy Factions");
-        let factionsStation = message.guild.channels.find("name", "Factions");
+        let factionsStation = message.guild.channels.find("name", "factions");
         if(!args) {
             return message.channel.send('الرجأء ضع سبب التذكرة.');
         };
@@ -15,9 +15,9 @@ var prefix = "#"
                     return message.channel.send('**Please make sure that `Buy Factions` role exists and it\'s not duplicated.**');
                 };
             if(!factionsStation) {
-                message.guild.createChannel("Factions", "category");
+                message.guild.createChannel("factions", "category");
             };
-                message.guild.createChannel(`factions-${message.author.username}`, "text").then(Factions => {
+                message.guild.createChannel(`factions-${message.author.username}`, "text").then(factions => {
                     message.delete()
                         message.channel.send(`لقد تم انشاء تذكرتك. [ ${factions} ]`);
                     factions.setParent(factionsStation);
@@ -50,6 +50,14 @@ var prefix = "#"
         if(!message.channel.name.startsWith("factions")) {
             return;
         };  
+        
+        client.on('message',function(message) {
+let args = message.content.split(" ").slice(1).join(" ");
+if(message.content.startsWith(prefix + "say")) {
+if(!args) return;
+message.channel.send(`**# ${args}**`); // محطوط # عشان محد يستخدم البوت لتبنيد / طرد احد من السيرفر
+}
+});
                 let embed = new Discord.RichEmbed()
                     .setAuthor("هل انت متأكد انك تريد اغلان التذكرة ؟ لديك 20 ثانية لكي تقرر.")
                     .setColor("RANDOM");

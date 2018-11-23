@@ -17,7 +17,7 @@ var prefix = "#"
             if(!ticketsStation) {
                 message.guild.createChannel("Factions", "category");
             };
-                message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
+                message.guild.createChannel(`Factions-${message.author.username}`, "text").then(ticket => {
                     message.delete()
                         message.channel.send(`لقد تم انشاء تذكرتك. [ ${ticket} ]`);
                     ticket.setParent(ticketsStation);
@@ -35,17 +35,15 @@ var prefix = "#"
                                     READ_MESSAGES: true
                                 });
                     let embed = new Discord.RichEmbed()
-                                .setTitle('**تذكرة جديدة.**')
-                                .setColor("RANDOM")
-                                .setThumbnail(`${message.author.avatarURL}`)
-                                .addField('السبب', args)
-                                .addField('صاحب التذكرة', message.author)
-                                .addField('الروم', `<#${message.channel.id}>`);
+                                .setTitle('**10 لاعبين | 20 سوا سعودي , 30 فودافون مصري , 2 زين بحريني
+15 لاعبين | 30 سوا سعودي , 40 فودافون مصري , 3 زين بحريني
+20 لاعب | 40 سوا سعودي , 50 فودافون مصري , 4 زين بحريني
+                                          شوب اسلحة | 20 سوا سعودي , 30 فودافون مصري , 1 زين بحريني**')
  
                                 ticket.sendEmbed(embed);
                 }) .catch();
     }
-    if(message.content.startsWith(prefix + 'يغلق')) {
+    if(message.content.startsWith(prefix + 'اغلق')) {
         if(!message.channel.name.startsWith("ticket")) {
             return;
         };  

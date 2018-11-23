@@ -17,7 +17,7 @@ var prefix = "#"
             if(!ticketsStation) {
                 message.guild.createChannel("Factions", "category");
             };
-                message.guild.createChannel(`Factions-${message.author.username}`, "text").then(ticket => {
+                message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
                     message.delete()
                         message.channel.send(`لقد تم انشاء تذكرتك. [ ${ticket} ]`);
                     ticket.setParent(ticketsStation);
@@ -45,9 +45,8 @@ var prefix = "#"
                                 ticket.sendEmbed(embed);
                 }) .catch();
     }
-    if(message.content.startsWith(prefix + 'close')) {
-            if(!message.member.hasPermission("ADMINISTRATOR")) return;
-        if(!message.channel.name.startsWith("Factions")) {
+    if(message.content.startsWith(prefix + 'يغلق')) {
+        if(!message.channel.name.startsWith("ticket")) {
             return;
         };  
                 let embed = new Discord.RichEmbed()
@@ -56,8 +55,8 @@ var prefix = "#"
                     message.channel.sendEmbed(embed) .then(codes => {
  
                    
-                        const filter = msg => msg.content.startsWith(prefix + 'yes');
-                        message.channel.awaitMessages(response => response.content === prefix + 'yes', {
+                        const filter = msg => msg.content.startsWith(prefix + 'نعم');
+                        message.channel.awaitMessages(response => response.content === prefix + 'نعم', {
                             max: 1,
                             time: 20000,
                             errors: ['time']

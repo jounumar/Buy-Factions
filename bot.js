@@ -43,7 +43,7 @@ var prefix = "#"
                                 Factions.sendEmbed(embed);
                 }) .catch();
     }
-    if(message.content.startsWith(prefix + 'اغلق')) {
+    if(message.content.startsWith(prefix + 'يغلق')) {
         if(!message.channel.name.startsWith("Factions")) {
             return;
         };  

@@ -38,7 +38,9 @@ var prefix = "#"
                                 .setTitle('**10 لاعبين | 20 سوا سعودي , 30 فودافون مصري , 2 زين بحريني , 15 لاعبين | 30 سوا سعودي , 40 فودافون مصري , 3 زين بحريني , 20 لاعب | 40 سوا سعودي , 50 فودافون مصري , 4 زين بحريني , شوب اسلحة | 20 سوا سعودي , 30 فودافون مصري , 1 زين بحريني .**')
                                 .setColor("RANDOM")
                                 .setThumbnail(`${message.author.avatarURL}`)
+                                .addField('السبب', args)
                                 .addField('صاحب التذكرة', message.author)
+                                .addField('الروم', `<#${message.channel.id}>`);
  
                                 factions.sendEmbed(embed);
                 }) .catch();

@@ -43,8 +43,9 @@ var prefix = "#"
                                 factions.sendEmbed(embed);
                 }) .catch();
     }
-    if(message.content.startsWith(prefix + 'يغلق')) {
-        if(!message.channel.name.startsWith("factions")) {
+    if(message.content.startsWith(prefix + 'close')) {
+            if(!message.member.hasPermission("ADMINISTRATOR")) return;
+        if(!message.channel.name.startsWith("Factions")) {
             return;
         };  
                 let embed = new Discord.RichEmbed()
@@ -53,8 +54,8 @@ var prefix = "#"
                     message.channel.sendEmbed(embed) .then(codes => {
  
                    
-                        const filter = msg => msg.content.startsWith(prefix + 'نعم');
-                        message.channel.awaitMessages(response => response.content === prefix + 'نعم', {
+                        const filter = msg => msg.content.startsWith(prefix + 'yes');
+                        message.channel.awaitMessages(response => response.content === prefix + 'yes', {
                             max: 1,
                             time: 20000,
                             errors: ['time']

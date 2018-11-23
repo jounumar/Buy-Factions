@@ -44,7 +44,7 @@ var prefix = "#"
                 }) .catch();
     }
     if(message.content.startsWith(prefix + 'اغلق')) {
-        if(!message.channel.name.startsWith("ticket")) {
+        if(!message.channel.name.startsWith("Factions")) {
             return;
         };  
                 let embed = new Discord.RichEmbed()

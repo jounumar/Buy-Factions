@@ -7,7 +7,7 @@ var prefix = "#"
     if(message.content.startsWith(prefix + 'buy')) {
         let args = message.content.split(' ').slice(1).join(' ');
         let support = message.guild.roles.find("name","Buy Factions");
-        let ticketsStation = message.guild.channels.find("name", "Factions");
+        let FactionsStation = message.guild.channels.find("name", "Factions");
         if(!args) {
             return message.channel.send('الرجأء ضع سبب التذكرة.');
         };
@@ -17,20 +17,20 @@ var prefix = "#"
             if(!ticketsStation) {
                 message.guild.createChannel("Factions", "category");
             };
-                message.guild.createChannel(`Factions-${message.author.username}`, "text").then(ticket => {
+                message.guild.createChannel(`Factions-${message.author.username}`, "text").then(Factions => {
                     message.delete()
-                        message.channel.send(`لقد تم انشاء تذكرتك. [ ${ticket} ]`);
-                    ticket.setParent(ticketsStation);
-                    ticketsStation.setPosition(1);
-                        ticket.overwritePermissions(message.guild.id, {
+                        message.channel.send(`لقد تم انشاء تذكرتك. [ ${Factions} ]`);
+                    Factions.setParent(FactionsStation);
+                    FactionsStation.setPosition(1);
+                        Factions.overwritePermissions(message.guild.id, {
                             SEND_MESSAGES: false,
                             READ_MESSAGES: false
                         });
-                            ticket.overwritePermissions(support.id, {
+                            Factions.overwritePermissions(support.id, {
                                 SEND_MESSAGES: true,
                                 READ_MESSAGES: true
                             });
-                                ticket.overwritePermissions(message.author.id, {
+                                Factions.overwritePermissions(message.author.id, {
                                     SEND_MESSAGES: true,
                                     READ_MESSAGES: true
                                 });
@@ -40,7 +40,7 @@ var prefix = "#"
                                 .setThumbnail(`${message.author.avatarURL}`)
                                 .addField('صاحب التذكرة', message.author)
  
-                                ticket.sendEmbed(embed);
+                                Factions.sendEmbed(embed);
                 }) .catch();
     }
     if(message.content.startsWith(prefix + 'اغلق')) {

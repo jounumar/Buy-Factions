@@ -47,7 +47,7 @@ var prefix = "#"
     }
     if(message.content.startsWith(prefix + 'close')) {
             if(!message.member.hasPermission("ADMINISTRATOR")) return;
-        if(!message.channel.name.startsWith("Factions")) {
+        if(!message.channel.name.startsWith("factions")) {
             return;
         };  
                 let embed = new Discord.RichEmbed()
